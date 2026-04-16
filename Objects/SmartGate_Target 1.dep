@@ -1,0 +1,139 @@
+Dependencies for Project 'SmartGate', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 6190000::V6.19::ARMCLANG
+F (.\FreeRtos\tasks.c)(0x67E5270A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/tasks.o -MD)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdlib.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\string.h)(0x63889D68)
+I (FreeRtos\include\FreeRTOS.h)(0x67E52708)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stddef.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (src\FreeRTOSConfig.h)(0x69E0C315)
+I (FreeRtos\include\projdefs.h)(0x67E52708)
+I (FreeRtos\include\portable.h)(0x67E52708)
+I (FreeRtos\include\deprecated_definitions.h)(0x67E52708)
+I (FreeRtos\portmacro.h)(0x67E5270A)
+I (FreeRtos\include\mpu_wrappers.h)(0x67E52708)
+I (FreeRtos\include\task.h)(0x67E5270A)
+I (FreeRtos\include\list.h)(0x67E52708)
+I (FreeRtos\include\timers.h)(0x67E5270A)
+I (FreeRtos\include\stack_macros.h)(0x67E5270A)
+F (.\FreeRtos\queue.c)(0x67E5270A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/queue.o -MD)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdlib.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\string.h)(0x63889D68)
+I (FreeRtos\include\FreeRTOS.h)(0x67E52708)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stddef.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (src\FreeRTOSConfig.h)(0x69E0C315)
+I (FreeRtos\include\projdefs.h)(0x67E52708)
+I (FreeRtos\include\portable.h)(0x67E52708)
+I (FreeRtos\include\deprecated_definitions.h)(0x67E52708)
+I (FreeRtos\portmacro.h)(0x67E5270A)
+I (FreeRtos\include\mpu_wrappers.h)(0x67E52708)
+I (FreeRtos\include\task.h)(0x67E5270A)
+I (FreeRtos\include\list.h)(0x67E52708)
+I (FreeRtos\include\queue.h)(0x67E5270A)
+F (.\FreeRtos\list.c)(0x67E5270A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/list.o -MD)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdlib.h)(0x63889D68)
+I (FreeRtos\include\FreeRTOS.h)(0x67E52708)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stddef.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (src\FreeRTOSConfig.h)(0x69E0C315)
+I (FreeRtos\include\projdefs.h)(0x67E52708)
+I (FreeRtos\include\portable.h)(0x67E52708)
+I (FreeRtos\include\deprecated_definitions.h)(0x67E52708)
+I (FreeRtos\portmacro.h)(0x67E5270A)
+I (FreeRtos\include\mpu_wrappers.h)(0x67E52708)
+I (FreeRtos\include\list.h)(0x67E52708)
+F (.\FreeRtos\event_groups.c)(0x67E52708)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/event_groups.o -MD)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdlib.h)(0x63889D68)
+I (FreeRtos\include\FreeRTOS.h)(0x67E52708)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stddef.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (src\FreeRTOSConfig.h)(0x69E0C315)
+I (FreeRtos\include\projdefs.h)(0x67E52708)
+I (FreeRtos\include\portable.h)(0x67E52708)
+I (FreeRtos\include\deprecated_definitions.h)(0x67E52708)
+I (FreeRtos\portmacro.h)(0x67E5270A)
+I (FreeRtos\include\mpu_wrappers.h)(0x67E52708)
+I (FreeRtos\include\task.h)(0x67E5270A)
+I (FreeRtos\include\list.h)(0x67E52708)
+I (FreeRtos\include\timers.h)(0x67E5270A)
+I (FreeRtos\include\event_groups.h)(0x67E52708)
+F (.\FreeRtos\stream_buffer.c)(0x67E5270A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/stream_buffer.o -MD)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\string.h)(0x63889D68)
+I (FreeRtos\include\FreeRTOS.h)(0x67E52708)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stddef.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (src\FreeRTOSConfig.h)(0x69E0C315)
+I (FreeRtos\include\projdefs.h)(0x67E52708)
+I (FreeRtos\include\portable.h)(0x67E52708)
+I (FreeRtos\include\deprecated_definitions.h)(0x67E52708)
+I (FreeRtos\portmacro.h)(0x67E5270A)
+I (FreeRtos\include\mpu_wrappers.h)(0x67E52708)
+I (FreeRtos\include\task.h)(0x67E5270A)
+I (FreeRtos\include\list.h)(0x67E52708)
+I (FreeRtos\include\stream_buffer.h)(0x67E5270A)
+F (.\FreeRtos\port.c)(0x67E5270A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/port.o -MD)
+I (FreeRtos\include\FreeRTOS.h)(0x67E52708)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stddef.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (src\FreeRTOSConfig.h)(0x69E0C315)
+I (FreeRtos\include\projdefs.h)(0x67E52708)
+I (FreeRtos\include\portable.h)(0x67E52708)
+I (FreeRtos\include\deprecated_definitions.h)(0x67E52708)
+I (FreeRtos\portmacro.h)(0x67E5270A)
+I (FreeRtos\include\mpu_wrappers.h)(0x67E52708)
+I (FreeRtos\include\task.h)(0x67E5270A)
+I (FreeRtos\include\list.h)(0x67E52708)
+F (.\FreeRtos\heap_4.c)(0x67E5270A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/heap_4.o -MD)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdlib.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\string.h)(0x63889D68)
+I (FreeRtos\include\FreeRTOS.h)(0x67E52708)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stddef.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (src\FreeRTOSConfig.h)(0x69E0C315)
+I (FreeRtos\include\projdefs.h)(0x67E52708)
+I (FreeRtos\include\portable.h)(0x67E52708)
+I (FreeRtos\include\deprecated_definitions.h)(0x67E52708)
+I (FreeRtos\portmacro.h)(0x67E5270A)
+I (FreeRtos\include\mpu_wrappers.h)(0x67E52708)
+I (FreeRtos\include\task.h)(0x67E5270A)
+I (FreeRtos\include\list.h)(0x67E52708)
+F (.\FreeRtos\startup_TM4C123.s)(0x51B6D5F6)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-Wa,armasm,--pd,"__UVISION_VERSION SETA 538" -Wa,armasm,--pd,"TM4C123GH6PM SETA 1"-o ./objects/startup_tm4c123.o)
+F (.\src\FreeRTOSConfig.h)(0x69E0C315)()
+F (.\src\main.c)(0x69E11844)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/main.o -MD)
+I (FreeRtos\include\FreeRTOS.h)(0x67E52708)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stddef.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (src\FreeRTOSConfig.h)(0x69E0C315)
+I (FreeRtos\include\projdefs.h)(0x67E52708)
+I (FreeRtos\include\portable.h)(0x67E52708)
+I (FreeRtos\include\deprecated_definitions.h)(0x67E52708)
+I (FreeRtos\portmacro.h)(0x67E5270A)
+I (FreeRtos\include\mpu_wrappers.h)(0x67E52708)
+I (FreeRtos\include\task.h)(0x67E5270A)
+I (FreeRtos\include\list.h)(0x67E52708)
+I (FreeRtos\include\queue.h)(0x67E5270A)
+I (FreeRtos\include\semphr.h)(0x67E5270A)
+I (src\gpio_driver.h)(0x69E118E5)
+I (src\shared_types.h)(0x69E116AF)
+F (.\src\system_TM4C123.c)(0x550A65DA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/system_tm4c123.o -MD)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123.h)(0x530EF2F6)
+I (D:\Desktop\Spring 2026\RTOS\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h)(0x550FE22C)
+I (FreeRtos\include\core_cm4.h)(0x626F912E)
+I (FreeRtos\include\cmsis_version.h)(0x626F912E)
+I (FreeRtos\include\cmsis_compiler.h)(0x626F912E)
+I (FreeRtos\include\cmsis_armclang.h)(0x626F912E)
+I (FreeRtos\include\mpu_armv7.h)(0x626F912E)
+I (D:\Desktop\Spring 2026\RTOS\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h)(0x51B6D5F6)
+F (.\src\gpio_driver.c)(0x69E112B2)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -w -I ./FreeRtos/include -I ./FreeRtos -I ./src-I"D:/Desktop/Spring 2026/RTOS/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123"-D__UVISION_VERSION="538" -DTM4C123GH6PM-o ./objects/gpio_driver.o -MD)
+I (src\gpio_driver.h)(0x69E118E5)
+I (D:\Desktop\Spring 2026\RTOS\ARM\ARMCLANG\include\stdint.h)(0x63889D68)
+I (D:\Desktop\Spring 2026\RTOS\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h)(0x550FE22C)
+I (FreeRtos\include\core_cm4.h)(0x626F912E)
+I (FreeRtos\include\cmsis_version.h)(0x626F912E)
+I (FreeRtos\include\cmsis_compiler.h)(0x626F912E)
+I (FreeRtos\include\cmsis_armclang.h)(0x626F912E)
+I (FreeRtos\include\mpu_armv7.h)(0x626F912E)
+I (D:\Desktop\Spring 2026\RTOS\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h)(0x51B6D5F6)
+F (.\src\shared_types.h)(0x69E116AF)()
