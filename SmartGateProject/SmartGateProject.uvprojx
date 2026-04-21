@@ -421,6 +421,26 @@
               <FileType>1</FileType>
               <FilePath>.\Src\main.c</FilePath>
             </File>
+            <File>
+              <FileName>input_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\input_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>gate_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gate_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>safety_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\safety_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>led_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\led_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

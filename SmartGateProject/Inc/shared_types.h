@@ -26,13 +26,24 @@ typedef enum {
     BTN_OBSTACLE
 } ButtonID_t;
 
-typedef enum { PANEL_DRIVER, PANEL_SECURITY } PanelID_t;
-typedef enum { PRESS_MANUAL, PRESS_ONETOUCH, PRESS_RELEASED } PressType_t;
+/* -- Panel Source -------------------------------------- */
+typedef enum {
+    PANEL_DRIVER,
+    PANEL_SECURITY
+} PanelID_t;
 
+/* -- Press Type ---------------------------------------- */
+typedef enum {
+    PRESS_MANUAL,
+    PRESS_ONETOUCH,
+    PRESS_RELEASED
+} PressType_t;
+
+/* -- Event Struct -------------------------------------- */
 typedef struct {
     ButtonID_t  button;
     PanelID_t   panel;
-    PressType_t type;
+    PressType_t pressType;
 } ButtonEvent_t;
 
 /* -- Shared RTOS Objects ------------------------------- */
@@ -40,6 +51,7 @@ extern QueueHandle_t     xButtonQueue;
 extern SemaphoreHandle_t xOpenLimitSem;
 extern SemaphoreHandle_t xClosedLimitSem;
 extern SemaphoreHandle_t xGateStateMutex;
-extern volatile GateState_t gateState;
 
-#endif /* SHARED_TYPES_H */
+extern GateState_t gateState;
+
+#endif

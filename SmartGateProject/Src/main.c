@@ -1,32 +1,34 @@
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "semphr.h"
+#include "main.h"
 #include "gpio.h"
-#include "shared_types.h"
 
-QueueHandle_t        xButtonQueue;
-SemaphoreHandle_t    xOpenLimitSem;
-SemaphoreHandle_t    xClosedLimitSem;
-SemaphoreHandle_t    xGateStateMutex;
-volatile GateState_t gateState = IDLE_CLOSED;
+/* Task Handles */
+void vInputTask(void *pvParameters);
+void vGateControlTask(void *pvParameters);
+void vSafetyTask(void *pvParameters);
+void vLEDTask(void *pvParameters);
 
-void vTask1(void *pvParams) {
-    for(;;) {
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-}
+int main(void)
+{
+    GPIO_Init();
 
-int main(void) {
-    gpio_init();
+    /* Create Queue */
+    xButtonQueue = xQueueCreate(10, sizeof(ButtonEvent_t));
 
-    xButtonQueue    = xQueueCreate(10, sizeof(ButtonEvent_t));
+    /* Create Semaphores */
     xOpenLimitSem   = xSemaphoreCreateBinary();
     xClosedLimitSem = xSemaphoreCreateBinary();
+
+    /* Create Mutex */
     xGateStateMutex = xSemaphoreCreateMutex();
 
-    xTaskCreate(vTask1, "Task1", 128, NULL, 1, NULL);
+    /* Create Tasks */
+    xTaskCreate(vInputTask, "Input", 128, NULL, 3, NULL);
+    xTaskCreate(vGateControlTask, "Gate", 128, NULL, 2, NULL);
+    xTaskCreate(vLEDTask, "LED", 128, NULL, 2, NULL);
+    xTaskCreate(vSafetyTask, "Safety", 128, NULL, 4, NULL);
 
+    /* Start Scheduler */
     vTaskStartScheduler();
-    for(;;);
+
+    while(1);
 }

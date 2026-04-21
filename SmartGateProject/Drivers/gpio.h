@@ -1,19 +1,22 @@
-#ifndef GPIO_DRIVER_H
-#define GPIO_DRIVER_H
+#ifndef GPIO_H
+#define GPIO_H
 
-#include <stdint.h>
+void GPIO_Init(void);
 
-/* LED colors */
-#define GREEN   0
-#define RED     1
+/* Inputs */
+int Read_Open_Button(void);
+int Read_Close_Button(void);
+int Read_Obstacle(void);
+int Read_Open_Limit(void);
+int Read_Closed_Limit(void);
 
-/* LED states */
-#define ON      1
-#define OFF     0
+/* Outputs */
+void Green_LED_On(void);
+void Green_LED_Off(void);
+void Red_LED_On(void);
+void Red_LED_Off(void);
+void Motor_Open(void);
+void Motor_Close(void);
+void Motor_Stop(void);
 
-/* Function prototypes */
-void gpio_init(void);
-void led_set(uint8_t color, uint8_t state);
-uint8_t button_read(uint8_t btn_id);
-
-#endif /* GPIO_DRIVER_H */
+#endif
