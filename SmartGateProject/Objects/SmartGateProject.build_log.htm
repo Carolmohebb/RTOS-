@@ -27,15 +27,8 @@ Project File Date:  04/23/2026
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'D:\Apps\Keil\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-compiling gate_task.c...
-compiling retarget.c...
-compiling led_task.c...
-compiling retarget_io.c...
-compiling system_TM4C123.c...
-assembling startup_TM4C123.s...
 compiling main.c...
-compiling consoleprint.c...
-compiling list.c...
+compiling system_TM4C123.c...
 Drivers/gpio.c(20): error: use of undeclared identifier 'SYSCTL_RCGCGPIO_R'
                 SYSCTL_RCGCGPIO_R |= 0X20;
                 ^
@@ -60,56 +53,58 @@ Drivers/gpio.c(27): error: use of undeclared identifier 'GPIO_PORTF_DEN_R'
 Drivers/gpio.c(28): error: use of undeclared identifier 'GPIO_PORTF_PUR_R'
                 GPIO_PORTF_PUR_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
                 ^
-Drivers/gpio.c(30): error: use of undeclared identifier 'NVIC_EN0_R'
+Drivers/gpio.c(30): error: use of undeclared identifier 'GPIO_PORTF_IS_R'
+                GPIO_PORTF_IS_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
+                ^
+Drivers/gpio.c(31): error: use of undeclared identifier 'GPIO_PORTF_IBE_R'
+    GPIO_PORTF_IBE_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    ^
+Drivers/gpio.c(32): error: use of undeclared identifier 'GPIO_PORTF_IEV_R'
+    GPIO_PORTF_IEV_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    ^
+Drivers/gpio.c(33): error: use of undeclared identifier 'GPIO_PORTF_ICR_R'
+    GPIO_PORTF_ICR_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    ^
+Drivers/gpio.c(34): error: use of undeclared identifier 'GPIO_PORTF_IM_R'
+    GPIO_PORTF_IM_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    ^
+Drivers/gpio.c(36): error: use of undeclared identifier 'NVIC_EN0_R'
                 NVIC_EN0_R |= (1 << 30);
                 ^
-Drivers/gpio.c(31): error: use of undeclared identifier 'NVIC_PRI7_R'
+Drivers/gpio.c(37): error: use of undeclared identifier 'NVIC_PRI7_R'
     NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | (5 << 21);
     ^
-Drivers/gpio.c(31): error: use of undeclared identifier 'NVIC_PRI7_R'
+Drivers/gpio.c(37): error: use of undeclared identifier 'NVIC_PRI7_R'
     NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | (5 << 21);
                    ^
-Drivers/gpio.c(38): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+Drivers/gpio.c(44): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
     return (GPIO_PORTF_DATA_R & BTN_DRV_OPEN) == 0;
             ^
-Drivers/gpio.c(43): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+Drivers/gpio.c(49): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
     return (GPIO_PORTF_DATA_R & BTN_DRV_CLOSE) == 0;
             ^
-Drivers/gpio.c(75): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+Drivers/gpio.c(81): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
     GPIO_PORTF_DATA_R |= GREEN_LED;
     ^
-Drivers/gpio.c(80): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
-    GPIO_PORTF_DATA_R &= ~GREEN_LED;
-    ^
-Drivers/gpio.c(85): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
-    GPIO_PORTF_DATA_R |= RED_LED;
-    ^
-Drivers/gpio.c(90): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
-    GPIO_PORTF_DATA_R &= ~RED_LED;
-    ^
-17 errors generated.
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
 compiling gpio.c...
-safety_task.c(8): error: call to undeclared function 'Read_Obstacle'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-        if (Read_Obstacle())
-            ^
-1 error generated.
+compiling retarget.c...
 compiling safety_task.c...
-input_task.c(28): error: call to undeclared function 'Read_Open_Limit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-        if (Read_Open_Limit())
-            ^
-input_task.c(31): error: call to undeclared function 'Read_Closed_Limit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-        if (Read_Closed_Limit())
-            ^
-2 errors generated.
 compiling input_task.c...
 compiling basic_io.c...
+compiling gate_task.c...
+compiling led_task.c...
+compiling list.c...
 compiling port.c...
+compiling consoleprint.c...
 compiling heap_4.c...
+compiling retarget_io.c...
 compiling freertos_evr.c...
 compiling queue.c...
-compiling timers.c...
 compiling tasks.c...
-".\Objects\SmartGateProject.axf" - 20 Error(s), 0 Warning(s).
+compiling timers.c...
+".\Objects\SmartGateProject.axf" - 19 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 

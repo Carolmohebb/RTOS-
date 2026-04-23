@@ -1,10 +1,6 @@
 #include "tm4c123gh6pm.h"
 #include "gpio.h"
-
-#define RED_LED (1U << 1)
-#define GREEN_LED (1U << 3)
-#define BTN_DRV_OPEN (1<<4)
-#define BTN_DRV_CLOSE (1<<0)
+#include "shared_types.h"
 
 /* Simulated variables */
 static int open_button = 0;
@@ -27,6 +23,12 @@ void GPIO_Init(void)
     GPIO_PORTF_DEN_R |= (GREEN_LED | RED_LED | BTN_DRV_OPEN | BTN_DRV_CLOSE);
 		GPIO_PORTF_PUR_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
 	
+		GPIO_PORTF_IS_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    GPIO_PORTF_IBE_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    GPIO_PORTF_IEV_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    GPIO_PORTF_ICR_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    GPIO_PORTF_IM_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
+		
 		NVIC_EN0_R |= (1 << 30);
     NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | (5 << 21);
 }

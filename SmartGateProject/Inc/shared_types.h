@@ -55,4 +55,9 @@ extern SemaphoreHandle_t xGateStateMutex;
 
 extern GateState_t gateState;
 
+#define RED_LED (1U << 1)
+#define GREEN_LED (1U << 3)
+#define BTN_DRV_OPEN (1<<4)
+#define BTN_DRV_CLOSE (1<<0)
+
 #endif

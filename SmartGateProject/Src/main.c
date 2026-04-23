@@ -1,5 +1,7 @@
+#include "tm4c123gh6pm.h"
 #include "main.h"
 #include "gpio.h"
+#include "shared_types.h"
 
 /* Task Handles */
 void vInputTask(void *pvParameters);

@@ -5,7 +5,7 @@ void vSafetyTask(void *pvParameters)
 {
     while(1)
     {
-        if (Read_Obstacle())
+        if (Read_Obstacle_Button())
         {
             xSemaphoreTake(xGateStateMutex, portMAX_DELAY);
 

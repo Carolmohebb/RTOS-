@@ -25,10 +25,10 @@ void vInputTask(void *pvParameters)
             xQueueSend(xButtonQueue, &event, 0);
         }
 
-        if (Read_Open_Limit())
+        if (Read_Open_Limit_Button())
             xSemaphoreGive(xOpenLimitSem);
 
-        if (Read_Closed_Limit())
+        if (Read_Closed_Limit_Button())
             xSemaphoreGive(xClosedLimitSem);
 
         vTaskDelay(pdMS_TO_TICKS(50));
