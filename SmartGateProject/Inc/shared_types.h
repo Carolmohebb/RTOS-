@@ -50,6 +50,7 @@ typedef struct {
 extern QueueHandle_t     xButtonQueue;
 extern SemaphoreHandle_t xOpenLimitSem;
 extern SemaphoreHandle_t xClosedLimitSem;
+extern SemaphoreHandle_t xObstacleSem;
 extern SemaphoreHandle_t xGateStateMutex;
 
 extern GateState_t gateState;

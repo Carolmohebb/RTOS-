@@ -6,9 +6,11 @@ void GPIO_Init(void);
 /* Inputs */
 int Read_Open_Button(void);
 int Read_Close_Button(void);
-int Read_Obstacle(void);
-int Read_Open_Limit(void);
-int Read_Closed_Limit(void);
+int Read_Obstacle_Button(void);
+int Read_Open_Limit_Button(void);
+int Read_Closed_Limit_Button(void);
+int Read_Sec_Open_Button(void);
+int Read_Sec_Close_Button(void);
 
 /* Outputs */
 void Green_LED_On(void);

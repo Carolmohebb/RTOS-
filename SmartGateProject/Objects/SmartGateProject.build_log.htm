@@ -1,0 +1,192 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: John Aziz, ASU, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  D:\Apps\Keil\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.8.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\Users\JOHN AZIZ\Desktop\ASU\4-Senior 1\Spring 26\RTOS\RTOS-\SmartGateProject\SmartGateProject.uvprojx
+Project File Date:  04/23/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'D:\Apps\Keil\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+compiling gate_task.c...
+compiling retarget.c...
+compiling led_task.c...
+compiling retarget_io.c...
+compiling system_TM4C123.c...
+assembling startup_TM4C123.s...
+compiling main.c...
+compiling consoleprint.c...
+compiling list.c...
+Drivers/gpio.c(20): error: use of undeclared identifier 'SYSCTL_RCGCGPIO_R'
+                SYSCTL_RCGCGPIO_R |= 0X20;
+                ^
+Drivers/gpio.c(21): error: use of undeclared identifier 'SYSCTL_PRGPIO_R'
+                while ((SYSCTL_PRGPIO_R & 0x20) == 0);
+                        ^
+Drivers/gpio.c(22): error: use of undeclared identifier 'GPIO_PORTF_LOCK_R'
+    GPIO_PORTF_LOCK_R = 0x4C4F434B;
+    ^
+Drivers/gpio.c(23): error: use of undeclared identifier 'GPIO_PORTF_CR_R'
+    GPIO_PORTF_CR_R |= 0x01;
+    ^
+Drivers/gpio.c(25): error: use of undeclared identifier 'GPIO_PORTF_DIR_R'
+                GPIO_PORTF_DIR_R |= (GREEN_LED | RED_LED);
+                ^
+Drivers/gpio.c(26): error: use of undeclared identifier 'GPIO_PORTF_DIR_R'
+                GPIO_PORTF_DIR_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
+                ^
+Drivers/gpio.c(27): error: use of undeclared identifier 'GPIO_PORTF_DEN_R'
+    GPIO_PORTF_DEN_R |= (GREEN_LED | RED_LED | BTN_DRV_OPEN | BTN_DRV_CLOSE);
+    ^
+Drivers/gpio.c(28): error: use of undeclared identifier 'GPIO_PORTF_PUR_R'
+                GPIO_PORTF_PUR_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
+                ^
+Drivers/gpio.c(30): error: use of undeclared identifier 'NVIC_EN0_R'
+                NVIC_EN0_R |= (1 << 30);
+                ^
+Drivers/gpio.c(31): error: use of undeclared identifier 'NVIC_PRI7_R'
+    NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | (5 << 21);
+    ^
+Drivers/gpio.c(31): error: use of undeclared identifier 'NVIC_PRI7_R'
+    NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | (5 << 21);
+                   ^
+Drivers/gpio.c(38): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+    return (GPIO_PORTF_DATA_R & BTN_DRV_OPEN) == 0;
+            ^
+Drivers/gpio.c(43): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+    return (GPIO_PORTF_DATA_R & BTN_DRV_CLOSE) == 0;
+            ^
+Drivers/gpio.c(75): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+    GPIO_PORTF_DATA_R |= GREEN_LED;
+    ^
+Drivers/gpio.c(80): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+    GPIO_PORTF_DATA_R &= ~GREEN_LED;
+    ^
+Drivers/gpio.c(85): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+    GPIO_PORTF_DATA_R |= RED_LED;
+    ^
+Drivers/gpio.c(90): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
+    GPIO_PORTF_DATA_R &= ~RED_LED;
+    ^
+17 errors generated.
+compiling gpio.c...
+safety_task.c(8): error: call to undeclared function 'Read_Obstacle'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+        if (Read_Obstacle())
+            ^
+1 error generated.
+compiling safety_task.c...
+input_task.c(28): error: call to undeclared function 'Read_Open_Limit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+        if (Read_Open_Limit())
+            ^
+input_task.c(31): error: call to undeclared function 'Read_Closed_Limit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+        if (Read_Closed_Limit())
+            ^
+2 errors generated.
+compiling input_task.c...
+compiling basic_io.c...
+compiling port.c...
+compiling heap_4.c...
+compiling freertos_evr.c...
+compiling queue.c...
+compiling timers.c...
+compiling tasks.c...
+".\Objects\SmartGateProject.axf" - 20 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.3.0.pack
+                ARM.CMSIS.6.3.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.2.0
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS-FreeRTOS.11.2.0.pack
+                ARM.CMSIS-FreeRTOS.11.2.0
+                Bundle of FreeRTOS for Cortex-M and Cortex-A
+   * Component: Config Variant: FreeRTOS Version: 11.2.0
+   * Component: Core Variant: Cortex-M Version: 11.2.0
+   * Component: Heap Variant: Heap_4 Version: 11.2.0
+   * Component: Timers Version: 11.2.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.ARM_Compiler.1.7.2.pack
+                Keil.ARM_Compiler.1.7.2
+                Keil ARM Compiler extensions for ARM Compiler 5 and ARM Compiler 6
+   * Component: STDIN Variant: Breakpoint Version: 1.2.0
+   * Component: STDOUT Variant: Breakpoint Version: 1.2.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil.TM4C_DFP.1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+   * Component: Startup Version: 1.0.1
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/RTOS
+  ./RTE/_Target_1
+  C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include
+  C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include
+  C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F
+  C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include
+  C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM.FreeRTOS::RTOS:Config:FreeRTOS:11.2.0
+      Include file:  Source/examples/template_configuration/FreeRTOSConfig.h
+
+   * Component: ARM.FreeRTOS::RTOS:Core:Cortex-M:11.2.0
+      Include file:  Source/include/FreeRTOS.h
+      Source file:   Source/list.c
+      Source file:   Source/queue.c
+      Source file:   Source/portable/GCC/ARM_CM4F/port.c
+      Include file:  Source/include/task.h
+      Include file:  Source/include/queue.h
+      Source file:   Source/tasks.c
+      Include file:  Source/include/semphr.h
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
+
+   * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:11.2.0
+      Source file:   Source/portable/MemMang/heap_4.c
+
+   * Component: ARM.FreeRTOS::RTOS:Timers:11.2.0
+      Source file:   Source/timers.c
+      Include file:  Source/include/timers.h
+
+   * Component: ARM::CMSIS:CORE:6.2.0
+
+   * Component: Keil.ARM Compiler::Compiler:I/O:STDIN:Breakpoint:1.2.0
+      Source file:   Source/retarget_io.c
+
+   * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:Breakpoint:1.2.0
+      Source file:   Source/retarget_io.c
+
+   * Component: Keil::Device:Startup:1.0.1
+      Include file:  Device/Include/TM4C123/TM4C123.h
+      Source file:   Device/Source/system_TM4C123.c
+      Source file:   Device/Source/ARM/startup_TM4C123.s
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

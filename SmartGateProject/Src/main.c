@@ -17,6 +17,7 @@ int main(void)
     /* Create Semaphores */
     xOpenLimitSem   = xSemaphoreCreateBinary();
     xClosedLimitSem = xSemaphoreCreateBinary();
+		xObstacleSem = xSemaphoreCreateBinary();
 
     /* Create Mutex */
     xGateStateMutex = xSemaphoreCreateMutex();

@@ -442,6 +442,21 @@
               <FileType>1</FileType>
               <FilePath>.\led_task.c</FilePath>
             </File>
+            <File>
+              <FileName>basic_io.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Required_Files\basic_io.c</FilePath>
+            </File>
+            <File>
+              <FileName>consoleprint.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Required_Files\consoleprint.c</FilePath>
+            </File>
+            <File>
+              <FileName>retarget.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Required_Files\retarget.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
