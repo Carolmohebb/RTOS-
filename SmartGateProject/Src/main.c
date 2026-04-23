@@ -1,13 +1,6 @@
 #include "tm4c123gh6pm.h"
 #include "main.h"
 #include "gpio.h"
-#include "shared_types.h"
-
-/* Task Handles */
-void vInputTask(void *pvParameters);
-void vGateControlTask(void *pvParameters);
-void vSafetyTask(void *pvParameters);
-void vLEDTask(void *pvParameters);
 
 int main(void)
 {
@@ -34,4 +27,33 @@ int main(void)
     vTaskStartScheduler();
 
     while(1);
+}
+
+static void GateState_Set(GateState_t newState)
+{
+    xSemaphoreTake(xGateStateMutex, portMAX_DELAY);
+    gateState = newState;
+    xSemaphoreGive(xGateStateMutex);
+}
+
+static GateState_t GateState_Get(void)
+{
+    GateState_t state;
+    xSemaphoreTake(xGateStateMutex, portMAX_DELAY);
+    state = gateState;
+    xSemaphoreGive(xGateStateMutex);
+    return state;
+}
+
+static bool GateState_CompareAndSet(GateState_t expected, GateState_t newState)
+{
+		bool success = false;
+		xSemaphoreTake(xGateStateMutex, portMAX_DELAY);
+		if (gateState == expected)
+		{
+				gateState = newState;
+				success = true;
+		}
+		xSemaphoreGive(xGateStateMutex);
+		return success;
 }
