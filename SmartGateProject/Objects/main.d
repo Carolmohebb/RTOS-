@@ -1,4 +1,5 @@
-./objects/main.o: Src\main.c Inc\main.h Inc\shared_types.h \
+./objects/main.o: Src\main.c Inc\tm4c123gh6pm.h Inc\main.h \
+  Inc\shared_types.h \
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h \
   D:\Apps\Keil\ARM\ARMCLANG\Bin\..\include\stddef.h \
   D:\Apps\Keil\ARM\ARMCLANG\Bin\..\include\stdint.h \
@@ -12,4 +13,4 @@
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\queue.h \
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h \
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h \
-  Drivers\gpio.h
+  D:\Apps\Keil\ARM\ARMCLANG\Bin\..\include\stdbool.h

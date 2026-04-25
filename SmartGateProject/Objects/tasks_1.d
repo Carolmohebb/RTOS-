@@ -1,4 +1,7 @@
-./objects/safety_task.o: safety_task.c Inc\shared_types.h \
+./objects/tasks_1.o: \
+  C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\tasks.c \
+  D:\Apps\Keil\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  D:\Apps\Keil\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h \
   D:\Apps\Keil\ARM\ARMCLANG\Bin\..\include\stddef.h \
   D:\Apps\Keil\ARM\ARMCLANG\Bin\..\include\stdint.h \
@@ -8,8 +11,7 @@
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h \
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h \
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h \
-  C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\semphr.h \
-  C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\queue.h \
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h \
   C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h \
-  Drivers\gpio.h
+  C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\timers.h \
+  C:\Users\JOHN\ AZIZ\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\stack_macros.h

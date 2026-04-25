@@ -22,89 +22,16 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 C:\Users\JOHN AZIZ\Desktop\ASU\4-Senior 1\Spring 26\RTOS\RTOS-\SmartGateProject\SmartGateProject.uvprojx
-Project File Date:  04/23/2026
+Project File Date:  04/25/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'D:\Apps\Keil\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
+Note: source file 'C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c' - object file renamed from '.\Objects\tasks.o' to '.\Objects\tasks_1.o'.
 compiling main.c...
-compiling system_TM4C123.c...
-Drivers/gpio.c(20): error: use of undeclared identifier 'SYSCTL_RCGCGPIO_R'
-                SYSCTL_RCGCGPIO_R |= 0X20;
-                ^
-Drivers/gpio.c(21): error: use of undeclared identifier 'SYSCTL_PRGPIO_R'
-                while ((SYSCTL_PRGPIO_R & 0x20) == 0);
-                        ^
-Drivers/gpio.c(22): error: use of undeclared identifier 'GPIO_PORTF_LOCK_R'
-    GPIO_PORTF_LOCK_R = 0x4C4F434B;
-    ^
-Drivers/gpio.c(23): error: use of undeclared identifier 'GPIO_PORTF_CR_R'
-    GPIO_PORTF_CR_R |= 0x01;
-    ^
-Drivers/gpio.c(25): error: use of undeclared identifier 'GPIO_PORTF_DIR_R'
-                GPIO_PORTF_DIR_R |= (GREEN_LED | RED_LED);
-                ^
-Drivers/gpio.c(26): error: use of undeclared identifier 'GPIO_PORTF_DIR_R'
-                GPIO_PORTF_DIR_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
-                ^
-Drivers/gpio.c(27): error: use of undeclared identifier 'GPIO_PORTF_DEN_R'
-    GPIO_PORTF_DEN_R |= (GREEN_LED | RED_LED | BTN_DRV_OPEN | BTN_DRV_CLOSE);
-    ^
-Drivers/gpio.c(28): error: use of undeclared identifier 'GPIO_PORTF_PUR_R'
-                GPIO_PORTF_PUR_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
-                ^
-Drivers/gpio.c(30): error: use of undeclared identifier 'GPIO_PORTF_IS_R'
-                GPIO_PORTF_IS_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
-                ^
-Drivers/gpio.c(31): error: use of undeclared identifier 'GPIO_PORTF_IBE_R'
-    GPIO_PORTF_IBE_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
-    ^
-Drivers/gpio.c(32): error: use of undeclared identifier 'GPIO_PORTF_IEV_R'
-    GPIO_PORTF_IEV_R &= ~(BTN_DRV_OPEN | BTN_DRV_CLOSE);
-    ^
-Drivers/gpio.c(33): error: use of undeclared identifier 'GPIO_PORTF_ICR_R'
-    GPIO_PORTF_ICR_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
-    ^
-Drivers/gpio.c(34): error: use of undeclared identifier 'GPIO_PORTF_IM_R'
-    GPIO_PORTF_IM_R |= (BTN_DRV_OPEN | BTN_DRV_CLOSE);
-    ^
-Drivers/gpio.c(36): error: use of undeclared identifier 'NVIC_EN0_R'
-                NVIC_EN0_R |= (1 << 30);
-                ^
-Drivers/gpio.c(37): error: use of undeclared identifier 'NVIC_PRI7_R'
-    NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | (5 << 21);
-    ^
-Drivers/gpio.c(37): error: use of undeclared identifier 'NVIC_PRI7_R'
-    NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | (5 << 21);
-                   ^
-Drivers/gpio.c(44): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
-    return (GPIO_PORTF_DATA_R & BTN_DRV_OPEN) == 0;
-            ^
-Drivers/gpio.c(49): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
-    return (GPIO_PORTF_DATA_R & BTN_DRV_CLOSE) == 0;
-            ^
-Drivers/gpio.c(81): error: use of undeclared identifier 'GPIO_PORTF_DATA_R'
-    GPIO_PORTF_DATA_R |= GREEN_LED;
-    ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-compiling gpio.c...
-compiling retarget.c...
-compiling safety_task.c...
-compiling input_task.c...
-compiling basic_io.c...
-compiling gate_task.c...
-compiling led_task.c...
-compiling list.c...
-compiling port.c...
-compiling consoleprint.c...
-compiling heap_4.c...
-compiling retarget_io.c...
-compiling freertos_evr.c...
-compiling queue.c...
-compiling tasks.c...
-compiling timers.c...
-".\Objects\SmartGateProject.axf" - 19 Error(s), 0 Warning(s).
+linking...
+Program Size: Code=19266 RO-data=694 RW-data=4 ZI-data=6760  
+".\Objects\SmartGateProject.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -151,15 +78,15 @@ Package Vendor: Keil
       Include file:  Source/examples/template_configuration/FreeRTOSConfig.h
 
    * Component: ARM.FreeRTOS::RTOS:Core:Cortex-M:11.2.0
-      Include file:  Source/include/FreeRTOS.h
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
       Source file:   Source/list.c
       Source file:   Source/queue.c
-      Source file:   Source/portable/GCC/ARM_CM4F/port.c
-      Include file:  Source/include/task.h
-      Include file:  Source/include/queue.h
       Source file:   Source/tasks.c
+      Include file:  Source/include/FreeRTOS.h
       Include file:  Source/include/semphr.h
-      Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
+      Include file:  Source/include/queue.h
+      Include file:  Source/include/task.h
+      Source file:   Source/portable/GCC/ARM_CM4F/port.c
 
    * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:11.2.0
       Source file:   Source/portable/MemMang/heap_4.c
@@ -177,10 +104,9 @@ Package Vendor: Keil
       Source file:   Source/retarget_io.c
 
    * Component: Keil::Device:Startup:1.0.1
-      Include file:  Device/Include/TM4C123/TM4C123.h
-      Source file:   Device/Source/system_TM4C123.c
       Source file:   Device/Source/ARM/startup_TM4C123.s
-Target not created.
+      Source file:   Device/Source/system_TM4C123.c
+      Include file:  Device/Include/TM4C123/TM4C123.h
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

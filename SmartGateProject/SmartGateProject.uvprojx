@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Required_Files;.\Drivers;.\Inc</IncludePath>
+              <IncludePath>..\..\Required_Files;.\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,21 +386,6 @@
           <GroupName>Source Group 1</GroupName>
         </Group>
         <Group>
-          <GroupName>Drivers</GroupName>
-          <Files>
-            <File>
-              <FileName>gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Drivers\gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\gpio.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Headers</GroupName>
           <Files>
             <File>
@@ -424,26 +409,6 @@
               <FilePath>.\Src\main.c</FilePath>
             </File>
             <File>
-              <FileName>input_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\input_task.c</FilePath>
-            </File>
-            <File>
-              <FileName>gate_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\gate_task.c</FilePath>
-            </File>
-            <File>
-              <FileName>safety_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\safety_task.c</FilePath>
-            </File>
-            <File>
-              <FileName>led_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\led_task.c</FilePath>
-            </File>
-            <File>
               <FileName>basic_io.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Required_Files\basic_io.c</FilePath>
@@ -457,6 +422,11 @@
               <FileName>retarget.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Required_Files\retarget.c</FilePath>
+            </File>
+            <File>
+              <FileName>tasks.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\tasks.c</FilePath>
             </File>
           </Files>
         </Group>
