@@ -1,5 +1,6 @@
 #include "tm4c123gh6pm.h"
 #include "main.h"
+#include "basic_io.h"
 
 static void GPIO_Init(void)
 {
@@ -153,11 +154,10 @@ void Interrupt_Init(void)
 /* -----------------------------------------------------------------------
  * Helper: queue a ButtonEvent from an ISR
  * --------------------------------------------------------------------- */
-static inline void QueueEventFromISR(ButtonID_t  btn,
-                                     PanelID_t   panel,
-                                     PressType_t type,
-                                     BaseType_t *pxWoken)
+static inline void QueueEventFromISR(ButtonID_t btn, PanelID_t panel,
+                                     PressType_t type, BaseType_t *pxWoken)
 {
+    if (xButtonQueue == NULL) return;
     ButtonEvent_t ev = { btn, panel, type };
     xQueueSendFromISR(xButtonQueue, &ev, pxWoken);
 }
@@ -167,6 +167,12 @@ static inline void QueueEventFromISR(ButtonID_t  btn,
  * --------------------------------------------------------------------- */
 void GPIOF_Handler(void)
 {
+		if (xButtonQueue == NULL)
+    {
+        GPIO_PORTF_ICR_R = 0xFF;   /* clear all flags and return safely */
+        return;
+    }
+	
     BaseType_t xWoken = pdFALSE;
 
     if (GPIO_PORTF_RIS_R & (1U << 4))
@@ -191,6 +197,12 @@ void GPIOF_Handler(void)
  * --------------------------------------------------------------------- */
 void GPIOB_Handler(void)
 {
+		if (xButtonQueue == NULL)
+    {
+        GPIO_PORTB_ICR_R = 0xFF;   /* clear all flags and return safely */
+        return;
+    }
+	
     BaseType_t xWoken = pdFALSE;
 
     /* PB0 - Driver OPEN */
@@ -222,6 +234,12 @@ void GPIOB_Handler(void)
  * --------------------------------------------------------------------- */
 void GPIOD_Handler(void)
 {
+		if (xButtonQueue == NULL)
+    {
+        GPIO_PORTD_ICR_R = 0xFF;   /* clear all flags and return safely */
+        return;
+    }
+	
     BaseType_t xWoken = pdFALSE;
 
     /* PD0 - Security OPEN */
@@ -253,6 +271,12 @@ void GPIOD_Handler(void)
  * --------------------------------------------------------------------- */
 void GPIOE_Handler(void)
 {
+		if (xButtonQueue == NULL)
+    {
+        GPIO_PORTE_ICR_R = 0xFF;   /* clear all flags and return safely */
+        return;
+    }
+	
     BaseType_t xWoken = pdFALSE;
 
     /* PE0 - Open Limit */
@@ -276,10 +300,10 @@ void GPIOE_Handler(void)
 
 int main(void)
 {
+		vPrintString("Hi");
     GPIO_Init();
-		Interrupt_Init();
-		
-    /* Create Queue */
+	
+		/* Create Queue */
     xButtonQueue = xQueueCreate(10, sizeof(ButtonEvent_t));
 
     /* Create Semaphores */
@@ -289,6 +313,8 @@ int main(void)
 
     /* Create Mutex */
     xGateStateMutex = xSemaphoreCreateMutex();
+	
+		Interrupt_Init();
 
     /* Create Tasks */
     xTaskCreate(vInputTask, "Input", 128, NULL, 3, NULL);

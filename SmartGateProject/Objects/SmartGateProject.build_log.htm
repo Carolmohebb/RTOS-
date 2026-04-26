@@ -22,15 +22,12 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 C:\Users\JOHN AZIZ\Desktop\ASU\4-Senior 1\Spring 26\RTOS\RTOS-\SmartGateProject\SmartGateProject.uvprojx
-Project File Date:  04/25/2026
+Project File Date:  04/26/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'D:\Apps\Keil\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
 Note: source file 'C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c' - object file renamed from '.\Objects\tasks.o' to '.\Objects\tasks_1.o'.
-compiling main.c...
-linking...
-Program Size: Code=19266 RO-data=694 RW-data=4 ZI-data=6760  
 ".\Objects\SmartGateProject.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -39,7 +36,9 @@ Package Vendor: ARM
                 https://www.keil.com/pack/ARM.CMSIS.6.3.0.pack
                 ARM.CMSIS.6.3.0
                 CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: OS Tick Version: 1.0.1
    * Component: CORE Version: 6.2.0
+   * Component: SysTick Version: 1.0.5
 
 Package Vendor: ARM
                 https://www.keil.com/pack/ARM.CMSIS-FreeRTOS.11.2.0.pack
@@ -47,6 +46,7 @@ Package Vendor: ARM
                 Bundle of FreeRTOS for Cortex-M and Cortex-A
    * Component: Config Variant: FreeRTOS Version: 11.2.0
    * Component: Core Variant: Cortex-M Version: 11.2.0
+   * Component: Event Groups Version: 11.2.0
    * Component: Heap Variant: Heap_4 Version: 11.2.0
    * Component: Timers Version: 11.2.0
 
@@ -70,9 +70,13 @@ Package Vendor: Keil
   C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include
   C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F
   C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include
+  C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/ARM/CMSIS/6.3.0/CMSIS/RTOS2/Include
   C:/Users/JOHN AZIZ/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
 
 <h2>Collection of Component Files used:</h2>
+
+   * Component: ::CMSIS:OS Tick:1.0.1 (API)
+      Include file:  CMSIS/RTOS2/Include/os_tick.h
 
    * Component: ARM.FreeRTOS::RTOS:Config:FreeRTOS:11.2.0
       Include file:  Source/examples/template_configuration/FreeRTOSConfig.h
@@ -82,11 +86,15 @@ Package Vendor: Keil
       Source file:   Source/list.c
       Source file:   Source/queue.c
       Source file:   Source/tasks.c
-      Include file:  Source/include/FreeRTOS.h
       Include file:  Source/include/semphr.h
+      Source file:   Source/portable/GCC/ARM_CM4F/port.c
+      Include file:  Source/include/FreeRTOS.h
       Include file:  Source/include/queue.h
       Include file:  Source/include/task.h
-      Source file:   Source/portable/GCC/ARM_CM4F/port.c
+
+   * Component: ARM.FreeRTOS::RTOS:Event Groups:11.2.0
+      Include file:  Source/include/event_groups.h
+      Source file:   Source/event_groups.c
 
    * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:11.2.0
       Source file:   Source/portable/MemMang/heap_4.c
@@ -97,6 +105,9 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:6.2.0
 
+   * Component: ARM::CMSIS:OS Tick:SysTick:1.0.5
+      Source file:   CMSIS/RTOS2/Source/os_systick.c
+
    * Component: Keil.ARM Compiler::Compiler:I/O:STDIN:Breakpoint:1.2.0
       Source file:   Source/retarget_io.c
 
@@ -104,8 +115,8 @@ Package Vendor: Keil
       Source file:   Source/retarget_io.c
 
    * Component: Keil::Device:Startup:1.0.1
-      Source file:   Device/Source/ARM/startup_TM4C123.s
       Source file:   Device/Source/system_TM4C123.c
+      Source file:   Device/Source/ARM/startup_TM4C123.s
       Include file:  Device/Include/TM4C123/TM4C123.h
 Build Time Elapsed:  00:00:01
 </pre>
