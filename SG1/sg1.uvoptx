@@ -145,7 +145,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ADC_INPUT</Key>
-          <Name>257</Name>
+          <Name>513</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
