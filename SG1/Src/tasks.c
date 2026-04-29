@@ -57,7 +57,7 @@ void vInputTask(void *pvParameters)
 
     for (;;)
     {
-				vPrintString("Input task running...\n");
+        vPrintString("Input task running...\n");
         /* Block indefinitely until ISR posts an event */
         if (xQueueReceive(xButtonQueue, &ev, portMAX_DELAY) == pdTRUE)
         {
@@ -105,19 +105,30 @@ void vInputTask(void *pvParameters)
  *   IDLE_CLOSED    -> OPENING  (OPEN button)
  *   OPENING        -> IDLE_OPEN       (open limit semaphore)
  *   OPENING        -> STOPPED_MIDWAY  (button released, manual mode)
+ *   OPENING        -> STOPPED_MIDWAY  (same panel CLOSE = conflict)
+ *   OPENING        -> CLOSING         (Security CLOSE = override)
  *   IDLE_OPEN      -> CLOSING  (CLOSE button)
  *   CLOSING        -> IDLE_CLOSED     (closed limit semaphore)
  *   CLOSING        -> STOPPED_MIDWAY  (button released, manual mode)
+ *   CLOSING        -> STOPPED_MIDWAY  (same panel OPEN = conflict)
+ *   CLOSING        -> OPENING         (Security OPEN = override)
  *   CLOSING        -> REVERSING       (obstacle - handled by Safety Task)
  *   REVERSING      -> STOPPED_MIDWAY  (after 0.5s - handled by Safety Task)
  *   STOPPED_MIDWAY -> OPENING/CLOSING (any open/close button)
  *
- * Security panel priority: if a Security event arrives, it overrides
- * any conflicting Driver event already being processed.
+ * Security priority:
+ *   - Driver events ignored while bSecurityActive = true
+ *   - Security pressing opposite direction while gate is moving
+ *     overrides immediately (no conflict stop)
+ *   - Same panel pressing OPEN + CLOSE simultaneously = conflict stop
  * ===================================================================== */
 
 static volatile bool bAutoMode       = false;
 static volatile bool bSecurityActive = false;
+static volatile bool bConflictStop   = false;  /* set when same-panel conflict causes
+                                                   STOPPED_MIDWAY. Causes the follow-up
+                                                   release/onetouch event to be discarded
+                                                   so gate stays stopped until new input. */
 
 void vGateControlTask(void *pvParameters)
 {
@@ -139,6 +150,17 @@ void vGateControlTask(void *pvParameters)
             if (ev.panel == PANEL_DRIVER && bSecurityActive)
                 goto check_limits;
 
+            /* Discard the event that follows a same-panel conflict stop.
+               Without this, the follow-up release/onetouch event moves
+               the gate again immediately after the conflict stop.        */
+            if (bConflictStop)
+            {
+                bConflictStop = false;
+                if (ev.panel == PANEL_SECURITY)
+                    bSecurityActive = false;
+                goto check_limits;
+            }
+
             /* PRESS_RELEASED: stop gate if in manual mode */
             if (ev.pressType == PRESS_RELEASED)
             {
@@ -151,9 +173,13 @@ void vGateControlTask(void *pvParameters)
                     if (current == OPENING || current == CLOSING)
                     {
                         GateState_Set(STOPPED_MIDWAY);
-                        vPrintString("Gate state -> STOPPED_MIDWAY (button released)\n");
+                        if (ev.panel == PANEL_DRIVER)
+                            vPrintString("Gate state -> STOPPED_MIDWAY (button released) [Driver]\n");
+                        else
+                            vPrintString("Gate state -> STOPPED_MIDWAY (button released) [Security]\n");
                     }
                 }
+                /* Auto mode: release ignored, gate keeps moving to limit */
                 goto check_limits;
             }
 
@@ -164,48 +190,85 @@ void vGateControlTask(void *pvParameters)
             /* State machine transitions */
             switch (current)
             {
+                /* IDLE_CLOSED: gate fully closed, waiting for OPEN */
                 case IDLE_CLOSED:
                     if (ev.button == BTN_DRV_OPEN ||
                         ev.button == BTN_SEC_OPEN)
                     {
                         bAutoMode = (ev.pressType == PRESS_ONETOUCH);
                         GateState_Set(OPENING);
-                        vPrintString("Gate state -> OPENING (Green LED ON)\n");
+                        if (ev.panel == PANEL_DRIVER)
+                            vPrintString("Gate state -> OPENING (Green LED ON) [Driver OPEN]\n");
+                        else
+                            vPrintString("Gate state -> OPENING (Green LED ON) [Security OPEN]\n");
                     }
                     break;
 
+                /* IDLE_OPEN: gate fully open, waiting for CLOSE */
                 case IDLE_OPEN:
                     if (ev.button == BTN_DRV_CLOSE ||
                         ev.button == BTN_SEC_CLOSE)
                     {
                         bAutoMode = (ev.pressType == PRESS_ONETOUCH);
                         GateState_Set(CLOSING);
-                        vPrintString("Gate state -> CLOSING (Red LED ON)\n");
+                        if (ev.panel == PANEL_DRIVER)
+                            vPrintString("Gate state -> CLOSING (Red LED ON) [Driver CLOSE]\n");
+                        else
+                            vPrintString("Gate state -> CLOSING (Red LED ON) [Security CLOSE]\n");
                     }
                     break;
 
+                /* OPENING: gate moving up */
                 case OPENING:
                     if (ev.button == BTN_DRV_CLOSE ||
                         ev.button == BTN_SEC_CLOSE)
                     {
-                        bAutoMode = false;
-                        GateState_Set(STOPPED_MIDWAY);
-                        vPrintString("Gate state -> STOPPED_MIDWAY (conflicting input)\n");
+                        if (ev.panel == PANEL_SECURITY)
+                        {
+                            /* Security overrides Driver -> go directly to CLOSING */
+                            bAutoMode     = (ev.pressType == PRESS_ONETOUCH);
+                            bConflictStop = false;
+                            GateState_Set(CLOSING);
+                            vPrintString("Gate state -> CLOSING (Red LED ON) [Security CLOSE overrides OPENING]\n");
+                        }
+                        else
+                        {
+                            /* Same panel conflict (Driver OPEN + Driver CLOSE) -> safe stop */
+                            bAutoMode     = false;
+                            bConflictStop = true;
+                            GateState_Set(STOPPED_MIDWAY);
+                            vPrintString("Gate state -> STOPPED_MIDWAY (conflicting input) [Driver CLOSE while OPENING]\n");
+                        }
                     }
                     else if (ev.button == BTN_DRV_OPEN ||
                              ev.button == BTN_SEC_OPEN)
                     {
+                        /* Already opening, update auto/manual mode */
                         bAutoMode = (ev.pressType == PRESS_ONETOUCH);
                     }
                     break;
 
+                /* CLOSING: gate moving down */
                 case CLOSING:
                     if (ev.button == BTN_DRV_OPEN ||
                         ev.button == BTN_SEC_OPEN)
                     {
-                        bAutoMode = false;
-                        GateState_Set(STOPPED_MIDWAY);
-                        vPrintString("Gate state -> STOPPED_MIDWAY (conflicting input)\n");
+                        if (ev.panel == PANEL_SECURITY)
+                        {
+                            /* Security overrides Driver -> go directly to OPENING */
+                            bAutoMode     = (ev.pressType == PRESS_ONETOUCH);
+                            bConflictStop = false;
+                            GateState_Set(OPENING);
+                            vPrintString("Gate state -> OPENING (Green LED ON) [Security OPEN overrides CLOSING]\n");
+                        }
+                        else
+                        {
+                            /* Same panel conflict (Driver CLOSE + Driver OPEN) -> safe stop */
+                            bAutoMode     = false;
+                            bConflictStop = true;
+                            GateState_Set(STOPPED_MIDWAY);
+                            vPrintString("Gate state -> STOPPED_MIDWAY (conflicting input) [Driver OPEN while CLOSING]\n");
+                        }
                     }
                     else if (ev.button == BTN_DRV_CLOSE ||
                              ev.button == BTN_SEC_CLOSE)
@@ -214,23 +277,31 @@ void vGateControlTask(void *pvParameters)
                     }
                     break;
 
+                /* STOPPED_MIDWAY: gate stopped between limits */
                 case STOPPED_MIDWAY:
                     if (ev.button == BTN_DRV_OPEN ||
                         ev.button == BTN_SEC_OPEN)
                     {
                         bAutoMode = (ev.pressType == PRESS_ONETOUCH);
                         GateState_Set(OPENING);
-                        vPrintString("Gate state -> OPENING (Green LED ON)\n");
+                        if (ev.panel == PANEL_DRIVER)
+                            vPrintString("Gate state -> OPENING (Green LED ON) [Driver OPEN from STOPPED]\n");
+                        else
+                            vPrintString("Gate state -> OPENING (Green LED ON) [Security OPEN from STOPPED]\n");
                     }
                     else if (ev.button == BTN_DRV_CLOSE ||
                              ev.button == BTN_SEC_CLOSE)
                     {
                         bAutoMode = (ev.pressType == PRESS_ONETOUCH);
                         GateState_Set(CLOSING);
-                        vPrintString("Gate state -> CLOSING (Red LED ON)\n");
+                        if (ev.panel == PANEL_DRIVER)
+                            vPrintString("Gate state -> CLOSING (Red LED ON) [Driver CLOSE from STOPPED]\n");
+                        else
+                            vPrintString("Gate state -> CLOSING (Red LED ON) [Security CLOSE from STOPPED]\n");
                     }
                     break;
 
+                /* REVERSING: owned entirely by Safety Task */
                 case REVERSING:
                     break;
 
@@ -240,6 +311,8 @@ void vGateControlTask(void *pvParameters)
         }
 
 check_limits:
+        /* Non-blocking limit semaphore poll (runs every 50ms).
+           Handles limit stops in both manual and auto mode.             */
         current = GateState_Get();
 
         if (current == OPENING)
@@ -284,16 +357,16 @@ void vSafetyTask(void *pvParameters)
         {
             if (GateState_CompareAndSet(CLOSING, REVERSING))
             {
-                vPrintString("Gate state -> REVERSING (obstacle detected, Green LED ON)\n");
+                vPrintString("Gate state -> REVERSING (obstacle detected, Green LED ON) [Obstacle]\n");
 
                 vTaskDelay(pdMS_TO_TICKS(500));
 
                 GateState_Set(STOPPED_MIDWAY);
-                vPrintString("Gate state -> STOPPED_MIDWAY (reverse complete, LEDs OFF)\n");
+                vPrintString("Gate state -> STOPPED_MIDWAY (reverse complete, LEDs OFF) [Obstacle]\n");
             }
             else
             {
-                vPrintString("Obstacle detected but ignored (gate not closing)\n");
+                vPrintString("Obstacle detected but ignored (gate not closing) [Obstacle]\n");
             }
         }
     }
