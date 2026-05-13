@@ -45,8 +45,6 @@ void vInputTask(void *pvParameters)
 
     for (;;)
     {
-        vPrintString("Input task running...\n");
-
         /* Block indefinitely until ISR posts an event */
         if (xQueueReceive(xButtonQueue, &ev, portMAX_DELAY) == pdTRUE)
         {
