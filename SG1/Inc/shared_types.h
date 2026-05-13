@@ -62,6 +62,7 @@ extern GateState_t gateState;
 #define LED_MASK     (LED_RED | LED_GREEN)
 
 #define BTN_PF4      (1U << 4)
+#define BTN_PF0      (1U << 0)
 #define BTN_PE0      (1U << 0)
 #define BTN_PE1      (1U << 1)
 #define BTN_PB0      (1U << 0)

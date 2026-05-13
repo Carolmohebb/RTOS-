@@ -14,5 +14,6 @@ bool GateState_CompareAndSet(GateState_t expected, GateState_t newState);
 
 void LED_Set(uint32_t color_mask);
 void LED_AllOff(void);
+void Interrupt_Init(void);
 
 #endif
